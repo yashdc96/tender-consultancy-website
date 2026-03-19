@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tender Consultancy Service – U.K. Chaudhary</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --gold: #c8973a;
+    --gold-light: #e8b86d;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray: #8a9ab0;
+    --text: #1e2d3d;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(13, 27, 42, 0.97);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    border-bottom: 1px solid rgba(200, 151, 58, 0.25);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); transition: 0.3s; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(200,151,58,0.04) 0px, rgba(200,151,58,0.04) 1px, transparent 1px, transparent 80px),
+      repeating-linear-gradient(0deg, rgba(200,151,58,0.04) 0px, rgba(200,151,58,0.04) 1px, transparent 1px, transparent 80px);
+  }
+  .hero-accent {
+    position: absolute; right: 0; top: 0; width: 45%; height: 100%;
+    background: linear-gradient(135deg, rgba(200,151,58,0.06) 0%, transparent 70%);
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    border: 1px solid rgba(200,151,58,0.4);
+    padding: 6px 16px; border-radius: 2px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900; line-height: 1.08;
+    color: var(--white);
+    max-width: 780px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: normal; }
+  .hero-subtitle {
+    margin-top: 1.6rem;
+    font-size: 1.1rem; color: rgba(255,255,255,0.6);
+    max-width: 520px; line-height: 1.7;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-cta {
+    margin-top: 2.8rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 32px; border-radius: 3px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+    padding: 14px 32px; border-radius: 3px;
+    font-weight: 500; font-size: 0.9rem; letter-spacing: 0.05em;
+    text-decoration: none; text-transform: uppercase;
+    transition: border-color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+  .hero-stats {
+    margin-top: 5rem;
+    display: flex; gap: 4rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.6s ease both;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 5%; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--navy);
+  }
+  .divider {
+    width: 48px; height: 3px; background: var(--gold);
+    margin: 1.4rem 0 2rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    margin-top: 3rem;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-wrap::before {
+    content: '';
+    position: absolute; top: -20px; left: -20px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--gold);
+    opacity: 0.35;
+    border-radius: 2px;
+  }
+  .about-img-wrap img {
+    width: 100%; border-radius: 2px;
+    display: block;
+    aspect-ratio: 4/5; object-fit: cover;
+  }
+  .about-img-placeholder {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-placeholder svg { opacity: 0.2; }
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); color: var(--navy);
+    padding: 20px 24px; border-radius: 3px;
+    text-align: center;
+  }
+  .about-badge .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; display: block; }
+  .about-badge .lbl { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .about-text p { line-height: 1.85; color: #4a5568; margin-bottom: 1.2rem; font-size: 1.02rem; }
+  .about-name {
+    margin-top: 2.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .name-line { width: 40px; height: 2px; background: var(--gold); }
+  .name-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); }
+  .name-sub { font-size: 0.82rem; color: var(--gray); margin-top: 2px; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+  .services-intro { max-width: 600px; margin-bottom: 3.5rem; }
+  .services-intro p { color: #4a5568; line-height: 1.7; font-size: 1.02rem; margin-top: 1rem; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2rem 2rem 2rem;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .service-card:hover {
+    border-left-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(13,27,42,0.1);
+  }
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: rgba(200,151,58,0.12);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .service-card h3 { font-size: 0.98rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+
+  /* ── CHARTERED ── */
+  #chartered {
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  #chartered::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,151,58,0.08) 0%, transparent 70%);
+  }
+  #chartered .section-title { color: var(--white); }
+  .chartered-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+  .chartered-text p { color: rgba(255,255,255,0.65); line-height: 1.8; font-size: 1.02rem; margin-bottom: 1.2rem; }
+  .chartered-features { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .feat-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .feat-icon { width: 36px; height: 36px; background: rgba(200,151,58,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .feat-icon svg { width: 16px; height: 16px; }
+  .feat-text h4 { font-size: 0.92rem; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+  .feat-text p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .chartered-visual {
+    background: var(--navy-mid);
+    border: 1px solid rgba(200,151,58,0.2);
+    border-radius: 6px; padding: 3rem;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .cv-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cv-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .cv-label { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+  .cv-value { font-size: 0.95rem; font-weight: 500; color: var(--white); }
+  .cv-tag { background: rgba(200,151,58,0.2); color: var(--gold); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
+  .contact-info p { color: #4a5568; line-height: 1.7; margin-bottom: 2rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; text-decoration: none; color: var(--text); transition: color 0.2s; }
+  .contact-item:hover { color: var(--gold); }
+  .contact-item:hover .c-icon { background: var(--gold); }
+  .contact-item:hover .c-icon svg { stroke: var(--navy); }
+  .c-icon { width: 42px; height: 42px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
+  .c-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; transition: stroke 0.2s; }
+  .c-text span { display: block; }
+  .c-text .c-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 2px; }
+  .c-text .c-val { font-weight: 500; }
+  .social-row { display: flex; gap: 1rem; margin-top: 2.5rem; }
+  .social-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(13,27,42,0.15);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: background 0.2s, border-color 0.2s;
+    color: var(--navy);
+  }
+  .social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--white); }
+  .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* contact form */
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); }
+  .form-group input,
+  .form-group textarea {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 3px; padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none; resize: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+  .form-group textarea { min-height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    background: var(--navy); color: var(--white);
+    border: none; padding: 14px 32px; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: flex; align-items: center; gap: 8px; width: fit-content;
+    text-decoration: none;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 3rem 5%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+    border-top: 1px solid rgba(200,151,58,0.2);
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+  .footer-logo span { color: rgba(255,255,255,0.7); }
+  .footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-grid, .chartered-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-wrap { order: -1; }
+    .nav-links { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: var(--navy); flex-direction: column; padding: 2rem 5%; gap: 1.5rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">Tender<span>Consultant</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#chartered">Chartered</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-tag">Tender & Contract Consultancy</div>
+  <h1 class="hero-title">Win More Contracts.<br><em>Maximize</em> Your Profits.</h1>
+  <p class="hero-subtitle">All your tender consultancy needs at one place — from bid preparation to complete contract management.</p>
+  <div class="hero-cta">
+    <a href="#services" class="btn-primary">Our Services</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-number">33+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div>
+      <div class="stat-number">GM</div>
+      <div class="stat-label">Former NTPC</div>
+    </div>
+    <div>
+      <div class="stat-number">14</div>
+      <div class="stat-label">Consultancy Services</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-placeholder">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div class="about-badge">
+        <span class="num">33+</span>
+        <span class="lbl">Years<br>Experience</span>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Professionals with Extensive Experience</h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>We are a leading consultancy for providing reliable services and support in managing tenders effectively to maximize chances of winning contracts — and handling those contracts efficiently to maximize profit and build market leadership.</p>
+        <p>We also provide tailored solutions in inventory management, cost control in production of finished goods, and comprehensive service delivery support.</p>
+        <p>Our expertise spans both domestic and international tenders across the government sector, drawing on decades of frontline experience in high-value procurement environments.</p>
+      </div>
+      <div class="about-name">
+        <div class="name-line"></div>
+        <div>
+          <div class="name-text">U. K. Chaudhary</div>
+          <div class="name-sub">General Manager (Retd.) — NTPC Ltd.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our Consultancy Solutions</h2>
+    <div class="divider"></div>
+    <p>End-to-end support across every stage of the tendering and contract lifecycle — from the first enquiry to final execution.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h3>Preparation of Bid Documents & General Purchase / Contract Conditions</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <h3>Guidance & Support for Obtaining Bid Documents / Tender Enquiries</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <h3>Information on Latest & Live Domestic / International Government Tenders</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <h3>Guidance & Support in Preparation of Competitive Bids with Maximum Benefits</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <h3>Guidance & Support in Post-Bid Discussions and Negotiations</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <h3>Support in Preparation of Contracts between Buyer and Seller</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">07</div>
+      <h3>Support for Efficient & Effective Execution of Contracts</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">08</div>
+      <h3>Guidance in Handling of Post-Award Variations</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">09</div>
+      <h3>Computation of Taxes & Duties — Applicable Rates & Cost Implications</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">10</div>
+      <h3>Commercial & Technical Evaluation and Comparison of Bids with Competitors</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">11</div>
+      <h3>Support in Selection & Finalization of Sub-Vendors / Sub-Suppliers</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">12</div>
+      <h3>Complete Contract Management — From Bidding to Completion</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">13</div>
+      <h3>Effective Inventory Management</h3>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">14</div>
+      <h3>Training & Support for Executives Handling Contracts and Procurement</h3>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTERED -->
+<section id="chartered">
+  <div class="chartered-grid">
+    <div class="chartered-text reveal">
+      <div class="section-label" style="color: var(--gold-light);">Chartered Engineer</div>
+      <h2 class="section-title">Technical Authority You Can Trust</h2>
+      <div class="divider"></div>
+      <p>With chartered engineering credentials and over three decades of operational experience at NTPC — one of India's largest power generation companies — we bring unmatched technical depth to every mandate.</p>
+      <p>Our chartered engineering background ensures that technical evaluations, bid assessments, and contract terms meet the highest industry standards.</p>
+      <div class="chartered-features">
+        <div class="feat-item">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round">
+              <path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Bid Validation</h4>
+            <p>Technical and commercial scrutiny of all bid documents.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Lifecycle Support</h4>
+            <p>End-to-end contract management from award to closure.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div class="feat-text">
+            <h4>Power Sector Expertise</h4>
+            <p>Deep knowledge of PSU procurement, GFR, and CVC guidelines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chartered-visual reveal">
+      <div class="cv-row">
+        <span class="cv-label">Designation</span>
+        <span class="cv-value">General Manager (Sales & Purchase)</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-label">Organisation</span>
+        <span class="cv-value">NTPC Limited</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-label">Experience</span>
+        <span class="cv-value">33+ Years</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-label">Specialisation</span>
+        <span class="cv-value">Tendering, Contracts & Procurement</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-label">Sector Focus</span>
+        <span class="cv-value">Government & Public Sector Undertakings</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-label">Status</span>
+        <span class="cv-tag">Available for Consultation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's Discuss Your Requirements</h2>
+      <div class="divider"></div>
+      <p>Whether you need help preparing a bid, managing a live contract, or training your team — reach out and we'll be happy to assist.</p>
+      <a href="mailto:ukchaudhary@tenderconsultant.in" class="contact-item">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+        </div>
+        <div class="c-text">
+          <span class="c-lbl">Email</span>
+          <span class="c-val">ukchaudhary@tenderconsultant.in</span>
+        </div>
+      </a>
+      <a href="tel:+919650993020" class="contact-item">
+        <div class="c-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 14.09 15.91l.79-.79a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="c-text">
+          <span class="c-lbl">Phone</span>
+          <span class="c-val">+91 96509 93020</span>
+        </div>
+      </a>
+      <div class="social-row">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/umakant.chaudhary.16" target="_blank" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/ukchaudhary.ntpc/" target="_blank" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/919650993020" target="_blank" class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full Name" />
+          </div>
+          <div class="form-group">
+            <label>Mobile No.</label>
+            <input type="tel" placeholder="+91 00000 00000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Describe your requirement…"></textarea>
+        </div>
+        <a href="mailto:ukchaudhary@tenderconsultant.in" class="form-submit">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p style="font-size:0.78rem;color:var(--gray);margin-top:0.5rem;">Clicking "Send Message" will open your email client pre-filled.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Tender<span>Consultant</span></div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2024 Tender Consultancy Service. All rights reserved.</div>
+</footer>
+
+<script>
+  // Nav toggle
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 4) * 0.1 + 's';
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Smooth nav link close on mobile
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Contact form submit — prefill mailto
+  document.querySelector('.form-submit').addEventListener('click', function(e) {
+    const name = document.querySelector('input[placeholder="Full Name"]').value;
+    const mobile = document.querySelector('input[placeholder="+91 00000 00000"]').value;
+    const message = document.querySelector('textarea').value;
+    if (name || message) {
+      e.preventDefault();
+      const body = encodeURIComponent(`Name: ${name}\nMobile: ${mobile}\n\n${message}`);
+      window.location.href = `mailto:ukchaudhary@tenderconsultant.in?subject=Consultancy Enquiry from ${name}&body=${body}`;
+    }
+  });
+</script>
+</body>
+</html>
